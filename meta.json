@@ -1,0 +1,11 @@
+{
+  "name": ".NET test report",
+  "summary": "读 NUnit 3 / MSTest / xUnit.net 的报告（不是 JUnit XML）。",
+  "author": "hummerstudio",
+  "license": "MIT",
+  "tags": [
+    "official-port",
+    "xunit"
+  ],
+  "homepage": "https://github.com/hummerstudio/jenkins-atom-xunit-report"
+}
