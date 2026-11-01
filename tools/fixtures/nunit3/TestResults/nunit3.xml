@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed" total="6" passed="3" failed="1" inconclusive="1" skipped="0" warnings="0" asserts="4" engine-version="3.13.2" duration="0.42">
+  <test-suite type="Assembly" id="0-1000" name="Sample.Tests.dll" fullname="Sample.Tests.dll" runstate="Runnable" testcasecount="6" result="Failed" passed="3" failed="1" inconclusive="1" skipped="0">
+    <test-suite type="TestSuite" id="0-1001" name="Sample" fullname="Sample" runstate="Runnable" testcasecount="6" result="Failed">
+      <test-suite type="TestFixture" id="0-1002" name="CalcTests" fullname="Sample.CalcTests" runstate="Runnable" testcasecount="4" result="Failed" passed="1" failed="1" inconclusive="1" skipped="0" duration="0.21">
+        <test-case id="0-1" name="Sample.CalcTests.Adds" fullname="Sample.CalcTests.Adds" methodname="Adds" classname="Sample.CalcTests" runstate="Runnable" result="Passed" duration="0.010" asserts="1"/>
+        <test-case id="0-2" name="Sample.CalcTests.Divides" fullname="Sample.CalcTests.Divides" methodname="Divides" classname="Sample.CalcTests" runstate="Runnable" result="Failed" duration="0.020" asserts="1">
+          <failure><message><![CDATA[Expected 2 but was 3]]></message><stack-trace><![CDATA[at Sample.CalcTests.Divides()]]></stack-trace></failure>
+        </test-case>
+        <test-case id="0-3" name="Sample.CalcTests.Slow" fullname="Sample.CalcTests.Slow" methodname="Slow" classname="Sample.CalcTests" runstate="Runnable" result="Inconclusive" duration="0.000">
+          <reason><message><![CDATA[only runs on CI]]></message></reason>
+        </test-case>
+        <test-case id="0-4" name="Sample.CalcTests.Warns" fullname="Sample.CalcTests.Warns" methodname="Warns" classname="Sample.CalcTests" runstate="Runnable" result="Warning" duration="0.000">
+          <reason><message><![CDATA[obsolete api]]></message></reason>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="0-1003" name="IoTests" fullname="Sample.IoTests" runstate="Runnable" testcasecount="2" result="Passed" passed="2" failed="0" inconclusive="0" skipped="0" duration="0.21">
+        <test-case id="0-5" name="Sample.IoTests.Reads" fullname="Sample.IoTests.Reads" methodname="Reads" classname="Sample.IoTests" runstate="Runnable" result="Passed" duration="0.100" asserts="2"/>
+        <test-case id="0-6" name="Sample.IoTests.Writes" fullname="Sample.IoTests.Writes" methodname="Writes" classname="Sample.IoTests" runstate="Runnable" result="Passed" duration="0.100" asserts="1"/>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

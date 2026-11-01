@@ -1,8 +1,8 @@
 {
   "atomCode": "xunit-report",
   "name": ".NET test report",
-  "version": "1.0.0",
-  "description": "读 NUnit 3 / MSTest / xUnit.net 的报告（不是 JUnit XML）。",
+  "version": "1.1.0",
+  "description": "Reads .NET test reports: NUnit 3/2, MSTest and dotnet test TRX, xUnit.net. Not JUnit XML.",
   "execution": {
     "packagePath": "xunit-report.jar",
     "language": "java",
@@ -12,7 +12,7 @@
     "testResults": {
       "label": "报告 glob",
       "type": "vuex-input",
-      "default": "**/TestResults/*.xml, **/test-results*.xml, **/nunit*.xml"
+      "default": "**/TestResults/*.trx, **/*.trx, **/TestResults/*.xml, **/test-results*.xml, **/nunit*.xml, **/xunit*.xml"
     },
     "label": {
       "label": "报告名称",
@@ -60,6 +60,14 @@
     "report": {
       "type": "report",
       "description": "构建页内嵌报告"
+    },
+    "errors": {
+      "type": "string",
+      "description": "tests that neither passed, failed nor were skipped (error, timeout, warning)"
+    },
+    "formats": {
+      "type": "string",
+      "description": "report shapes found, comma separated: nunit3 / nunit2 / mstest-trx / xunit-net"
     }
   },
   "x-jenkins": {

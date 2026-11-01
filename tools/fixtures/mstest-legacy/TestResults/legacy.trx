@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="legacy-1" name="vstest" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <Results>
+    <UnitTestResult executionId="a" testId="a" testName="Legacy.One" outcome="Passed" duration="00:00:01"/>
+    <UnitTestResult executionId="b" testId="b" testName="Legacy.Two" outcome="Passed" duration="00:00:01"/>
+    <UnitTestResult executionId="c" testId="c" testName="Legacy.Three" outcome="Failed" duration="00:00:01">
+      <Output><ErrorInfo><Message>nope</Message></ErrorInfo></Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Legacy.One" storage="Legacy.dll" id="a"><TestMethod codeBase="Legacy.dll" className="Legacy, Legacy" name="One"/></UnitTest>
+    <UnitTest name="Legacy.Two" storage="Legacy.dll" id="b"><TestMethod codeBase="Legacy.dll" className="Legacy, Legacy" name="Two"/></UnitTest>
+    <UnitTest name="Legacy.Three" storage="Legacy.dll" id="c"><TestMethod codeBase="Legacy.dll" className="Legacy, Legacy" name="Three"/></UnitTest>
+  </TestDefinitions>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" passed="2" failed="1" inconclusive="0" notExecuted="0"/>
+  </ResultSummary>
+</TestRun>

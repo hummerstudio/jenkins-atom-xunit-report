@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Failed" total="4" passed="2" failed="1" inconclusive="0" skipped="0" warnings="1" duration="0.1">
+  <test-suite type="Assembly" id="0-1" name="Warn.Tests.dll">
+    <test-suite type="TestFixture" id="0-2" name="WarnTests" testcasecount="4" result="Failed" passed="2" failed="1" inconclusive="0" skipped="0">
+      <test-case id="0-3" name="WarnTests.A" result="Passed" duration="0.01"/>
+      <test-case id="0-4" name="WarnTests.B" result="Passed" duration="0.01"/>
+      <test-case id="0-5" name="WarnTests.C" result="Failed" duration="0.01">
+        <failure><message><![CDATA[boom]]></message></failure>
+      </test-case>
+      <test-case id="0-6" name="WarnTests.D" result="Warning" duration="0.01" label="Warning">
+        <reason><message><![CDATA[Skipped or failed setup/teardown]]></message></reason>
+      </test-case>
+    </test-suite>
+  </test-suite>
+</test-run>

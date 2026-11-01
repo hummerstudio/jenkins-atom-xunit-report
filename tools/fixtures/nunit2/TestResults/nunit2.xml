@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-results name="Sample.Tests.dll" total="5" errors="0" failures="1" not-run="2" inconclusive="1" ignored="1" skipped="0" invalid="0" date="2026-10-31" time="10:00:00">
+  <test-suite name="SuiteA" total="3" errors="0" failures="1">
+    <results>
+      <test-case name="SuiteA.Adds" executed="True" result="Success" success="True" time="0.010"/>
+      <test-case name="SuiteA.Divides" executed="True" result="Failure" success="False" time="0.020">
+        <failure><message><![CDATA[Expected 2 but was 3]]></message><stack-trace><![CDATA[at SuiteA.Divides()]]></stack-trace></failure>
+      </test-case>
+      <test-case name="SuiteA.Ignores" executed="False" result="Ignored" success="False">
+        <reason><message><![CDATA[not today]]></message></reason>
+      </test-case>
+    </results>
+  </test-suite>
+  <test-suite name="SuiteB" total="2" errors="0" failures="0">
+    <results>
+      <test-case name="SuiteB.Ambiguous" executed="True" result="Success" success="True" time="0.010"/>
+      <test-case name="SuiteB.Unsure" executed="True" result="Inconclusive" success="False" time="0.010"/>
+    </results>
+  </test-suite>
+</test-results>

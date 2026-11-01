@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assemblies timestamp="10/31/2026 10:00:00">
+  <assembly name="Sample.Tests.dll" environment="64-bit .NET 8.0.10" test-framework="xUnit.net 2.9.2" run-date="2026-10-31" run-time="10:00:00" total="4" passed="3" failed="1" skipped="0" time="0.45" errors="0">
+    <errors/>
+    <collection name="Test collection for Sample.CalcTests" total="4" passed="3" failed="1" skipped="0" time="0.45">
+      <test name="Sample.CalcTests.Adds" type="Sample.CalcTests" method="Adds" time="0.010" result="Pass"/>
+      <test name="Sample.CalcTests.Divides" type="Sample.CalcTests" method="Divides" time="0.020" result="Fail">
+        <failure exception-type="Xunit.Sdk.EqualException"><message><![CDATA[Assert.Equal() Failure]]></message><stack-trace><![CDATA[at Sample.CalcTests.Divides()]]></stack-trace></failure>
+      </test>
+      <test name="Sample.CalcTests.Reads" type="Sample.CalcTests" method="Reads" time="0.200" result="Pass"/>
+      <test name="Sample.CalcTests.Writes" type="Sample.CalcTests" method="Writes" time="0.220" result="Pass"/>
+    </collection>
+  </assembly>
+  <assembly name="Sample.More.dll" environment="64-bit .NET 8.0.10" test-framework="xUnit.net 2.9.2" run-date="2026-10-31" run-time="10:00:00" total="1" passed="1" failed="0" skipped="0" time="0.05" errors="0">
+    <collection name="Test collection for Sample.MoreTests" total="1" passed="1" failed="0" skipped="0" time="0.05">
+      <test name="Sample.MoreTests.One" type="Sample.MoreTests" method="One" time="0.050" result="Pass"/>
+    </collection>
+  </assembly>
+</assemblies>

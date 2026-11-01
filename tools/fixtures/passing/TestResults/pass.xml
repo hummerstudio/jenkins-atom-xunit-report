@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" warnings="0" duration="0.05">
+  <test-suite type="Assembly" id="0-1" name="Green.Tests.dll">
+    <test-suite type="TestFixture" id="0-2" name="GreenTests" testcasecount="3" result="Passed" passed="3" failed="0" inconclusive="0" skipped="0">
+      <test-case id="0-3" name="GreenTests.A" result="Passed" duration="0.01" asserts="1"/>
+      <test-case id="0-4" name="GreenTests.B" result="Passed" duration="0.01" asserts="1"/>
+      <test-case id="0-5" name="GreenTests.C" result="Passed" duration="0.01" asserts="1"/>
+    </test-suite>
+  </test-suite>
+</test-run>

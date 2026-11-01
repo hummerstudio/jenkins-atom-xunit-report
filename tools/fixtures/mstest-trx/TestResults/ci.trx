@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="0f6d1e2a-1111-4c4c-9d9d-000000000001" name="dotnet test" runUser="ci" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="default" id="0f6d1e2a-2222-4c4c-9d9d-000000000002"/>
+  <Results>
+    <UnitTestResult executionId="e1" testId="t1" testName="Sample.Calc.Adds" outcome="Passed" duration="00:00:00.0100000"/>
+    <UnitTestResult executionId="e2" testId="t2" testName="Sample.Calc.Subtracts" outcome="Passed" duration="00:00:00.0100000"/>
+    <UnitTestResult executionId="e3" testId="t3" testName="Sample.Io.Reads" outcome="Passed" duration="00:00:00.0200000"/>
+    <UnitTestResult executionId="e4" testId="t4" testName="Sample.Io.Writes" outcome="Passed" duration="00:00:00.0200000"/>
+    <UnitTestResult executionId="e5" testId="t5" testName="Sample.Calc.Divides" outcome="Failed" duration="00:00:00.0300000">
+      <Output><ErrorInfo><Message>Expected 2 but was 3</Message><StackTrace>at Sample.Calc.Divides()</StackTrace></ErrorInfo></Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e6" testId="t6" testName="Sample.Web.Fetch" outcome="Error" duration="00:00:00.0400000">
+      <Output><ErrorInfo><Message>System.Net.Http.HttpRequestException: no network</Message></ErrorInfo></Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e7" testId="t7" testName="Sample.Calc.Never" outcome="NotExecuted" duration="00:00:00.0000000">
+      <Output><StdOut>omit-from-jenkins:true</StdOut></Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e8" testId="t8" testName="Sample.Calc.Unsure" outcome="Inconclusive" duration="00:00:00.0000000"/>
+    <UnitTestResult executionId="e9" testId="t9" testName="Sample.Calc.DD (container)" outcome="Failed" resultType="DataDrivenTest" duration="00:00:00.0000000">
+      <InnerResults>
+        <UnitTestResult executionId="e9-1" testId="t9" testName="Sample.Calc.DD" outcome="Failed" resultType="DataDrivenDataRow" dataRowInfo="1" duration="00:00:00.0000000"/>
+      </InnerResults>
+    </UnitTestResult>
+    <UnitTestResult executionId="e10" testId="t10" testName="Sample.Calc.Omitted" outcome="Failed" duration="00:00:00.0000000">
+      <Output><StdOut>omit-from-jenkins:true
+the runner already reported this one</StdOut><ErrorInfo><Message>flaky</Message></ErrorInfo></Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Sample.Calc.Adds" storage="Sample.Tests.dll" id="t1"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="Adds"/></UnitTest>
+    <UnitTest name="Sample.Calc.Subtracts" storage="Sample.Tests.dll" id="t2"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="Subtracts"/></UnitTest>
+    <UnitTest name="Sample.Io.Reads" storage="Sample.Tests.dll" id="t3"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Io, Sample.Tests" name="Reads"/></UnitTest>
+    <UnitTest name="Sample.Io.Writes" storage="Sample.Tests.dll" id="t4"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Io, Sample.Tests" name="Writes"/></UnitTest>
+    <UnitTest name="Sample.Calc.Divides" storage="Sample.Tests.dll" id="t5"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="Divides"/></UnitTest>
+    <UnitTest name="Sample.Web.Fetch" storage="Sample.Tests.dll" id="t6"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Web, Sample.Tests" name="Fetch"/></UnitTest>
+    <UnitTest name="Sample.Calc.Never" storage="Sample.Tests.dll" id="t7"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="Never"/></UnitTest>
+    <UnitTest name="Sample.Calc.Unsure" storage="Sample.Tests.dll" id="t8"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="Unsure"/></UnitTest>
+    <UnitTest name="Sample.Calc.DD" storage="Sample.Tests.dll" id="t9"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="DD"/></UnitTest>
+    <UnitTest name="Sample.Calc.Omitted" storage="Sample.Tests.dll" id="t10"><TestMethod codeBase="Sample.Tests.dll" adapterTypeName="executor://xunit" className="Sample.Calc, Sample.Tests" name="Omitted"/></UnitTest>
+  </TestDefinitions>
+  <ResultSummary outcome="Failed">
+    <Counters total="8" executed="7" passed="4" failed="1" error="1" timeout="0" aborted="0" inconclusive="1" passedButRunAborted="0" notRunnable="0" notExecuted="1" disconnected="0" warning="0" completed="0" inProgress="0" pending="0"/>
+  </ResultSummary>
+</TestRun>
