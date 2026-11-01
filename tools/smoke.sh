@@ -63,15 +63,27 @@ printf '{"allowEmptyResults": "true"}' >"$dir/input.json"
 run "$dir" >/dev/null 2>&1 || fail "allowEmptyResults: $(cat "$dir/output.json")"
 [ "$(output "$dir" total)" = "0" ] || fail "allowEmptyResults: total=$(output "$dir" total)"
 
-## 7. a report that is not XML, and a report with no cases, are both 40002
+## 7. a report that is not XML is 40003 (parse failure), a report with no cases is 40002
 dir="$(mktemp -d)"; mkdir -p "$dir/TestResults"
 printf 'this is not xml at all' >"$dir/TestResults/broken.xml"
 printf '{"testResults": "TestResults/*.xml"}' >"$dir/input.json"
 if run "$dir" >/dev/null 2>&1; then fail "garbage xml did not fail"; fi
-contains "$dir/output.json" '"errorCode":40002'
+contains "$dir/output.json" '"errorCode":40003'
+# ...and the opt-in still lets the build through, which is what allowEmptyResults promises
+printf '{"testResults": "TestResults/*.xml", "allowUnreadableReports": "true", "allowEmptyResults": "true"}' >"$dir/input.json"
+run "$dir" >/dev/null 2>&1 || fail "allowUnreadableReports should let a broken report through: $(cat "$dir/output.json")"
+[ "$(output "$dir" total)" = "0" ] || fail "opt-in total=$(output "$dir" total)"
 
+# valid XML that is not a report this atom knows: still a parse failure, not "zero tests"
 dir="$(mktemp -d)"; mkdir -p "$dir/TestResults"
 printf '<something><else/></something>' >"$dir/TestResults/empty.xml"
+printf '{"testResults": "TestResults/*.xml"}' >"$dir/input.json"
+if run "$dir" >/dev/null 2>&1; then fail "an unrecognised report did not fail"; fi
+contains "$dir/output.json" '"errorCode":40003'
+
+# a report in a known format that simply has no cases: that is 40002
+dir="$(mktemp -d)"; mkdir -p "$dir/TestResults"
+printf '<test-run id="1"><test-suite type="Assembly" name="a"/></test-run>' >"$dir/TestResults/empty.xml"
 printf '{"testResults": "TestResults/*.xml"}' >"$dir/input.json"
 if run "$dir" >/dev/null 2>&1; then fail "a report without cases did not fail"; fi
 contains "$dir/output.json" '"errorCode":40002'
@@ -84,10 +96,11 @@ if run "$dir" >"$dir/log.txt" 2>&1; then fail "a DOCTYPE document was accepted";
 absent "$dir/output.json" 'root:'
 
 ## 9. one broken report does not hide the good ones, and the log says so
+##    (the opt-in is what allows the good ones through; by default a half-written report fails the step)
 dir="$(mktemp -d)"
 cp -R tools/fixtures/nunit3/. "$dir/"
 printf '<broken' >"$dir/TestResults/half-written.xml"
-printf '{}' >"$dir/input.json"
+printf '{"allowUnreadableReports": "true"}' >"$dir/input.json"
 run "$dir" >"$dir/log.txt" 2>&1 || fail "partial: $(cat "$dir/output.json")"
 [ "$(output "$dir" total)" = "6" ] || fail "partial: total=$(output "$dir" total)"
 contains "$dir/log.txt" 'could not be read'
@@ -120,4 +133,4 @@ printf '{}' >"$dir/input.json"
 run "$dir" >/dev/null 2>&1 || fail "unstable: $(cat "$dir/output.json")"
 agree "tools/fixtures/mstest-trx" "$dir" --unstable=yes
 
-echo "smoke ok: nunit3 (inconclusive + warning), nunit2, trx (2010 + 2006 namespaces, data-driven, omit-from-jenkins), xunit.net, mixed, default pattern, explicit pattern, XXE, partial reports, failOnFailure, unstable"
+echo "smoke ok: nunit3 (inconclusive + warning), nunit2, trx (2010 + 2006 namespaces, data-driven, omit-from-jenkins), xunit.net, mixed, default pattern, explicit pattern, XXE, unreadable reports fail by default, partial reports with the opt-in, failOnFailure, unstable"

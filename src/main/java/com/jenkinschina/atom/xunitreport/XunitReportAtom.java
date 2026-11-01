@@ -52,6 +52,7 @@ public class XunitReportAtom implements AtomTask {
         boolean failOnFailure = context.getBooleanParam("failOnFailure", false);
         boolean skipMarkingUnstable = context.getBooleanParam("skipMarkingUnstable", false);
         boolean allowEmptyResults = context.getBooleanParam("allowEmptyResults", false);
+        boolean allowUnreadable = context.getBooleanParam("allowUnreadableReports", false);
 
         List<Path> files = match(workspace, pattern);
         if (files.isEmpty()) {
@@ -74,6 +75,11 @@ public class XunitReportAtom implements AtomTask {
         // a file that matched but could not be parsed is not the same as "no tests": say so in the log
         if (unreadable > 0) {
             context.log("[xunit] " + unreadable + " of " + files.size() + " report(s) could not be read");
+            if (!allowUnreadable) {
+                return AtomResult.error(ErrorType.USER, 40003,
+                        unreadable + " of " + files.size() + " report(s) could not be parsed (set"
+                                + " allowUnreadableReports=true to accept this)");
+            }
         }
         if (totals.total == 0) {
             if (allowEmptyResults) {

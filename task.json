@@ -1,7 +1,7 @@
 {
   "atomCode": "xunit-report",
   "name": ".NET test report",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Reads .NET test reports: NUnit 3/2, MSTest and dotnet test TRX, xUnit.net. Not JUnit XML.",
   "execution": {
     "packagePath": "xunit-report.jar",
@@ -37,6 +37,11 @@
     "skipMarkingUnstable": {
       "label": "不把构建标为 UNSTABLE",
       "type": "checkbox",
+      "default": "false"
+    },
+    "allowUnreadableReports": {
+      "label": "报告解析失败也继续（默认 false：解析失败即失败）",
+      "type": "boolean",
       "default": "false"
     }
   },
