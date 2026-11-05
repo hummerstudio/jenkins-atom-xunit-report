@@ -1,4 +1,4 @@
-# jenkins-atom-xunit-report
+# jenkins-atom-xunit
 
 The .NET test reports that are **not** JUnit XML: port of **xunit** (11,755 installs), plus the two shapes the
 **nunit** (3,814) and **mstest** (3,707) plugins read. One step, one report page.

@@ -35,9 +35,9 @@ mkdir -p "$classes/META-INF/services"
 cp src/main/resources/META-INF/services/* "$classes/META-INF/services/"
 ( cd "$sdk" && "$JAR" xf "$SDK_JAR" && rm -rf META-INF/MANIFEST.MF META-INF/services )
 
-rm -rf dist/xunit-report
-mkdir -p dist/xunit-report
-"$JAR" --create --file dist/xunit-report/xunit-report.jar -C "$classes" . -C "$sdk" .
-cp task.json dist/xunit-report/
-[ -f meta.json ] && cp meta.json dist/xunit-report/
-echo "built dist/xunit-report: $(ls dist/xunit-report | tr '\n' ' ')"
+rm -rf dist/xunit
+mkdir -p dist/xunit
+"$JAR" --create --file dist/xunit/xunit.jar -C "$classes" . -C "$sdk" .
+cp task.json dist/xunit/
+[ -f meta.json ] && cp meta.json dist/xunit/
+echo "built dist/xunit: $(ls dist/xunit | tr '\n' ' ')"

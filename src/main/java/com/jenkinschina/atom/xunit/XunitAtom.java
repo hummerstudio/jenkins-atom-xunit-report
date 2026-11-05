@@ -1,4 +1,4 @@
-package com.jenkinschina.atom.xunitreport;
+package com.jenkinschina.atom.xunit;
 
 import com.jenkinschina.atom.sdk.AtomContext;
 import com.jenkinschina.atom.sdk.AtomResult;
@@ -37,7 +37,7 @@ import org.w3c.dom.NodeList;
  * {@code skipped = @inconclusive + @total - @executed}. Both are in {@code tools/oracle/} and the smoke test runs them
  * over the same fixtures to check this class agrees.
  */
-public class XunitReportAtom implements AtomTask {
+public class XunitAtom implements AtomTask {
 
     /** .trx is dotnet test's own extension; the other patterns are what the plugins document. */
     private static final String DEFAULT_PATTERN =

@@ -1,12 +1,12 @@
 {
-  "atomCode": "xunit-report",
+  "atomCode": "xunit",
   "name": ".NET test report",
   "version": "1.1.1",
   "description": "Reads .NET test reports: NUnit 3/2, MSTest and dotnet test TRX, xUnit.net. Not JUnit XML.",
   "execution": {
-    "packagePath": "xunit-report.jar",
+    "packagePath": "xunit.jar",
     "language": "java",
-    "target": "$atom_java_path -cp xunit-report.jar com.jenkinschina.atom.sdk.AtomRunner"
+    "target": "$atom_java_path -cp xunit.jar com.jenkinschina.atom.sdk.AtomRunner"
   },
   "input": {
     "testResults": {

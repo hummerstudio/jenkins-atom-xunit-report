@@ -27,5 +27,5 @@ jobs:
         run: ./tools/smoke.sh
       - uses: actions/upload-artifact@v4
         with:
-          name: xunit-report-atom
-          path: dist/xunit-report/
+          name: xunit-atom
+          path: dist/xunit/
