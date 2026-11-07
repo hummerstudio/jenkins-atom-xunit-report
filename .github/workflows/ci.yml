@@ -37,4 +37,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: xunit-atom
-          path: atom/dist/xunit/
+          path: atom/target/dist/xunit/
