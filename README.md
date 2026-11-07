@@ -16,7 +16,7 @@ MSTest projects, for example) is summed into one page. The `formats` output says
 ## Counting rules
 
 Taken from the plugins' own XSLT rather than invented: `tools/oracle/` holds `nunit-to-junit.xsl` and
-`mstest-to-junit.xsl` copied verbatim out of the `nunit` and `mstest` hpi, and the smoke test runs them over the same
+`mstest-to-junit.xsl` copied verbatim out of the `nunit` and `mstest` hpi, and the integration test runs them over the same
 fixtures to check that this atom agrees.
 
 - **NUnit 3**: `skipped = @skipped + @inconclusive`; whatever `@passed + @failed + @skipped + @inconclusive` does not
@@ -37,10 +37,12 @@ readable is left, the step fails with `40002`.
 The step asks for `UNSTABLE` when anything failed or errored, the way the JUnit publisher does, unless
 `skipMarkingUnstable` is set; `failOnFailure` turns the same condition into a failed step.
 
-## Build and smoke test
+## Build and test
 
 ```bash
-./build.sh
-./tools/smoke.sh              # fixtures checked against the plugins' XSLT, plus the failure paths
-python3 tools/mutations.py    # proves the smoke goes red when the atom is wrong
+mvn verify                    # fixtures checked against the plugins' XSLT, plus the failure paths
+python3 tools/mutations.py    # plants bugs one at a time and requires the suite to go red
 ```
+
+`src/test/java/atom/XunitIT.java` runs the same oracle the smoke test did — `tools/oracle/*.xsl` over the fixtures,
+via the JDK's own XSLT — so a count the atom gets wrong has to disagree with Jenkins' rule.
